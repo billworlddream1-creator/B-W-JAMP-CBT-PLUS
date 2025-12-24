@@ -8,20 +8,21 @@ interface LiveAnalyticsProps {
 }
 
 const LiveAnalytics: React.FC<LiveAnalyticsProps> = ({ stats, theme }) => {
-  const [insight, setInsight] = useState("Analytical Insight: Physics participation has surged by 14% this morning. Mathematics remains the most challenging module globally.");
+  const [insight, setInsight] = useState("Global Intel: A 300+ JAMB score is comparable to a 1350+ SAT score in terms of difficulty.");
 
   useEffect(() => {
     const insights = [
-      "Analytical Insight: 85% of scholars scoring 320+ spend at least 2 hours daily in the Study Vault.",
-      "Trend Alert: Use of English proficiency is up 12% among Premium users this week.",
-      "Global Pulse: Over 45,000 practice questions were solved in the last 60 minutes.",
-      "Success Metric: Candidates using AI Explanations are 3x more likely to correct their mistakes in the next session.",
-      "Live Data: Biology is currently the most practiced subject in Southern Nigeria."
+      "Global Intel: A 300+ JAMB score is comparable to a 1350+ SAT score in terms of academic rigor.",
+      "SA Benchmark: JAMB Mathematics covers 90% of the same syllabus as the South African Matric (NSC) Maths.",
+      "Euro Standard: Top Biology scorers here match the knowledge base of UK A-Level A* candidates.",
+      "US Comparison: The speed required for JAMB Use of English is 15% faster than the standard ACT English section.",
+      "Matric Pulse: 1,200 South African-based students are also using B&W CBT to prep for local benchmarks.",
+      "Logic Check: European Baccalaureate students often struggle with the logic puzzles found in JAMB English."
     ];
     
     const interval = setInterval(() => {
       setInsight(insights[Math.floor(Math.random() * insights.length)]);
-    }, 15000); // Rotate every 15 seconds
+    }, 12000); // Rotate every 12 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -77,10 +78,13 @@ const LiveAnalytics: React.FC<LiveAnalyticsProps> = ({ stats, theme }) => {
         </div>
       </div>
 
-      <div className="mt-10 p-6 bg-slate-900 rounded-[2rem] text-center min-h-[80px] flex items-center justify-center">
-        <p className="text-[9px] font-bold text-white/60 leading-relaxed tracking-wide uppercase italic">
-          {insight}
-        </p>
+      <div className="mt-10 p-6 bg-slate-900 rounded-[2rem] text-center min-h-[100px] flex items-center justify-center border-t-4 border-amber-400/20">
+        <div className="space-y-2">
+          <div className="text-[8px] font-black text-amber-400 uppercase tracking-[0.4em]">Global Intelligence Report</div>
+          <p className="text-[10px] font-bold text-white leading-relaxed tracking-wide uppercase">
+            {insight}
+          </p>
+        </div>
       </div>
     </div>
   );

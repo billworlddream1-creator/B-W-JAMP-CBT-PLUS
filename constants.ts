@@ -29,9 +29,8 @@ export const SALUTATIONS = [
   "Welcome, Distinguished Scholar. Excellence awaits! ✨",
   "Step into your future, one question at a time! 🚀",
   "Greetings! Your hard work is the key to admission! 🔑",
-  "Wake up! Your 350+ score isn't going to print itself! 🖨️",
-  "The library is quiet, but your brain should be loud! 🧠",
-  "Future Doctor/Engineer in the building! Let's work! 🏗️"
+  "The World is watching. Practice like a global champion! 🌍",
+  "Future Ivy League or Unilag Scholar? The work is the same! 🏛️"
 ];
 
 export const MOCK_STUDY_MATERIALS: StudyMaterial[] = SUBJECTS.map(subject => ({
@@ -39,8 +38,12 @@ export const MOCK_STUDY_MATERIALS: StudyMaterial[] = SUBJECTS.map(subject => ({
   modules: [
     { id: 'm1', title: 'The Foundation Phase', content: `This module covers the core concepts of ${subject}. JAMB frequently pulls 40% of their questions from these fundamental topics. Mastery here is non-negotiable for anyone seeking a score above 250.`, isPremium: false },
     { id: 'm2', title: 'Strategic Application', content: `We transition from 'knowing' to 'solving'. In ${subject}, speed is just as important as accuracy. This module focuses on the mental shortcuts required to finish 40 questions in record time.`, isPremium: false },
-    { id: 'm3', title: 'The 300+ Secret: Elite Logic', content: `This premium module analyzes high-difficulty questions in ${subject} that separate the average candidates from the elite scholars. We break down complex logic used by JAMB examiners.`, isPremium: true },
-    { id: 'm4', title: 'Exam Eve Checklist', content: `A high-impact review module for ${subject}. It contains the 'Golden Formulas' and 'Forbidden Errors' that you must review 24 hours before your actual exam.`, isPremium: true },
+    { id: 'm3', title: 'Global Perspective: JAMB vs. The World', content: `How does your ${subject} knowledge compare globally? 
+    
+    • IN SOUTH AFRICA: This content mirrors the National Senior Certificate (NSC) 'Matric' exams and NBTs. Like JAMB, the NSC demands high analytical precision.
+    • IN THE USA: This is equivalent to the SAT Subject Tests or ACT. While the SAT focuses more on aptitude, JAMB requires deep subject-specific mastery.
+    • IN EUROPE: You are studying at the level of UK A-Levels or the French Baccalauréat. High scores in ${subject} prove you can compete in any European university.`, isPremium: true },
+    { id: 'm4', title: 'The 300+ Secret: Elite Logic', content: `This premium module analyzes high-difficulty questions in ${subject} that separate the average candidates from the elite scholars. We break down complex logic used by JAMB examiners.`, isPremium: true },
   ]
 }));
 
@@ -61,12 +64,10 @@ export const CORRECT_SHOUTS = [
   "FUTURE 400 SCORER! 🚀",
   "Spot on! You're cooking! 👨‍🍳",
   "Omo, you sabi this thing! 💎",
-  "Excellent! Brain box loading... 🧠",
-  "Sharper than a new razor! 🪒",
   "Correct! Your Admission is sure! 🎓",
   "Banger! No mistakes here! ✨",
-  "You're on fire! Unstoppable! 🧨",
-  "Pure Brilliance! Keep it moving! 🌊"
+  "A-Level performance! Spot on! 🇬🇧",
+  "SAT standard accuracy! Amazing! 🇺🇸"
 ];
 
 export const INCORRECT_SHOUTS = [
@@ -75,11 +76,9 @@ export const INCORRECT_SHOUTS = [
   "Chai! JAMB go catch you o! 🏃‍♂️",
   "Wrong! Are you sure you're reading? 👀",
   "E shock you? Try again jo! ⚡",
-  "Knowledge not found! 404 Error! ❌",
   "Is this how you want to enter Uni? 🏫",
-  "Small math, you don fail! Bully! 🤡",
-  "This one is a 'pity' error! Focus! 🎯",
-  "Don't let them laugh at you on result day! 📉"
+  "South African Matrics would pass this! Step up! 🇿🇦",
+  "American SAT students are faster. Focus! 🇺🇸"
 ];
 
 const firstNames = ["Chidi", "Olumide", "Amina", "Ngozi", "Tunde", "Zainab", "Femi", "Bisi", "Kola", "Efe", "Uche", "Ifeanyi", "Fatima", "Sade", "Emeka"];
@@ -100,31 +99,30 @@ export const PLANS: Plan[] = [
     id: 'Free',
     name: 'Starter',
     price: 'Free',
-    features: ['4 Questions per Subject', 'Limited Study Topics', 'Limited Hall of Fame Shuffles'],
+    features: ['4 Questions per Subject', 'Limited Study Topics', 'Standard Stats'],
     color: 'slate'
   },
   {
     id: 'Basic',
     name: 'Standard',
     price: '₦2,500',
-    features: ['All Subjects', '20 Questions per Session', 'Full Study Materials', 'Unlimited Shuffles'],
+    features: ['All Subjects', '20 Questions per Session', 'Global Exam Comparisons', 'Unlimited Shuffles'],
     color: 'indigo'
   },
   {
     id: 'Premium',
     name: 'Pro Elite',
     price: '₦5,000',
-    features: ['Unlimited Questions', 'Full Exam Mode', 'Everything Unlocked', 'Unlimited AI Explanations'],
+    features: ['Unlimited Questions', 'Full Exam Mode', 'Everything Unlocked', 'AI Global Tutoring'],
     color: 'purple'
   }
 ];
 
 export const MOCK_ACTIVITIES: ActivityLog[] = [
-  { id: '1', userEmail: 'scholar_tunde@gmail.com', action: 'Quiz Started', timestamp: 'Just now', details: 'Chemistry (Atomic Structure)' },
+  { id: '1', userEmail: 'scholar_tunde@gmail.com', action: 'Global Comparison', timestamp: 'Just now', details: 'Reading: JAMB vs SAT' },
   { id: '2', userEmail: 'ngozi.j@edu.ng', action: 'Upgrade', timestamp: '5 mins ago', details: 'Upgraded to Pro Elite' },
-  { id: '3', userEmail: 'mike_physics@web.com', action: 'Study Session', timestamp: '12 mins ago', details: 'Mastering Motion & Gravity' },
+  { id: '3', userEmail: 'mike_physics@web.com', action: 'Study Session', timestamp: '12 mins ago', details: 'Comparing A-Level Mechanics' },
   { id: '4', userEmail: 'future_doc@jamb.ng', action: 'Quiz Finished', timestamp: '20 mins ago', details: 'Score: 19/20 (Biology)' },
-  { id: '5', userEmail: 'abubakar_f@gmail.com', action: 'AI Help', timestamp: '45 mins ago', details: 'Explaining Logarithms' },
 ];
 
 export const MOCK_PAYMENTS: PaymentLog[] = [
@@ -143,9 +141,8 @@ export const MOCK_QUESTIONS: Question[] = [
 ];
 
 export const UPGRADE_MESSAGES = [
-  "🚀 Ace JAMB with Premium: Unlock 5,000+ Past Questions!",
-  "💡 Free users get limited questions. Go Pro for full exam simulations!",
-  "🏆 Join 10,000+ students scoring 300+ with our AI Tutor.",
-  "⚡ Pro users finish exams 20% faster on average. Upgrade now!",
-  "💎 Unlock the 'Mistake Analysis' tool to see exactly where you fail.",
+  "🚀 Ace JAMB & NSC: Unlock Global Study Modules!",
+  "💡 Compare your JAMB score with SAT & A-Level benchmarks!",
+  "🏆 Join 10,000+ students aiming for World-Class scores.",
+  "⚡ Pro users study at an Ivy League standard. Upgrade now!",
 ];
