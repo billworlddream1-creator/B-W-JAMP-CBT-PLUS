@@ -28,28 +28,31 @@ export const SALUTATIONS = [
   "Hello Candidate! Ready to dominate JAMB today? 🔥",
   "Welcome, Distinguished Scholar. Excellence awaits! ✨",
   "Step into your future, one question at a time! 🚀",
-  "Greetings! Your hard work is the key to admission! 🔑"
+  "Greetings! Your hard work is the key to admission! 🔑",
+  "Wake up! Your 350+ score isn't going to print itself! 🖨️",
+  "The library is quiet, but your brain should be loud! 🧠",
+  "Future Doctor/Engineer in the building! Let's work! 🏗️"
 ];
 
 export const MOCK_STUDY_MATERIALS: StudyMaterial[] = SUBJECTS.map(subject => ({
   subject,
   modules: [
-    { id: 'm1', title: 'Fundamental Principles', content: `This module covers the core concepts of ${subject}. Understanding the basics is crucial for acing JAMB. Take notes on key definitions and recurring patterns in past questions.`, isPremium: false },
-    { id: 'm2', title: 'Advanced Applications', content: `Moving deeper into ${subject}, we look at complex scenarios and multi-step problem solving. Focus on high-frequency topics that appear annually in UTME.`, isPremium: false },
-    { id: 'm3', title: 'The JAMB Trap: Common Errors', content: `JAMB often sets "traps" in ${subject}. This premium module analyzes the top 10 mistakes students make and how to avoid them through critical thinking.`, isPremium: true },
-    { id: 'm4', title: 'Rapid Review Summary', content: `A concise wrap-up of everything you need to know about ${subject} in 15 minutes. Perfect for final-day revision and mental mapping.`, isPremium: true },
+    { id: 'm1', title: 'The Foundation Phase', content: `This module covers the core concepts of ${subject}. JAMB frequently pulls 40% of their questions from these fundamental topics. Mastery here is non-negotiable for anyone seeking a score above 250.`, isPremium: false },
+    { id: 'm2', title: 'Strategic Application', content: `We transition from 'knowing' to 'solving'. In ${subject}, speed is just as important as accuracy. This module focuses on the mental shortcuts required to finish 40 questions in record time.`, isPremium: false },
+    { id: 'm3', title: 'The 300+ Secret: Elite Logic', content: `This premium module analyzes high-difficulty questions in ${subject} that separate the average candidates from the elite scholars. We break down complex logic used by JAMB examiners.`, isPremium: true },
+    { id: 'm4', title: 'Exam Eve Checklist', content: `A high-impact review module for ${subject}. It contains the 'Golden Formulas' and 'Forbidden Errors' that you must review 24 hours before your actual exam.`, isPremium: true },
   ]
 }));
 
 export const GET_MOCK_LIVE_STATS = (): LiveStats => ({
-  activeUsers: Math.floor(Math.random() * (1500 - 800) + 800),
+  activeUsers: Math.floor(Math.random() * (2500 - 1200) + 1200),
   trendingSubject: SUBJECTS[Math.floor(Math.random() * SUBJECTS.length)],
-  totalQuestionsSolved: 1240582 + Math.floor(Math.random() * 500),
+  totalQuestionsSolved: 3450912 + Math.floor(Math.random() * 1000),
   recentScores: [
-    { name: "Tunde A.", score: 342, subject: "Physics" },
-    { name: "Bisi O.", score: 310, subject: "English" },
-    { name: "Chidi K.", score: 358, subject: "Mathematics" },
-    { name: "Fatima S.", score: 325, subject: "Biology" },
+    { name: "Segun W.", score: 355, subject: "Chemistry" },
+    { name: "Adaeze P.", score: 318, subject: "Government" },
+    { name: "Ibrahim M.", score: 362, subject: "Mathematics" },
+    { name: "Chinelo V.", score: 329, subject: "English" },
   ]
 });
 
@@ -61,7 +64,9 @@ export const CORRECT_SHOUTS = [
   "Excellent! Brain box loading... 🧠",
   "Sharper than a new razor! 🪒",
   "Correct! Your Admission is sure! 🎓",
-  "Banger! No mistakes here! ✨"
+  "Banger! No mistakes here! ✨",
+  "You're on fire! Unstoppable! 🧨",
+  "Pure Brilliance! Keep it moving! 🌊"
 ];
 
 export const INCORRECT_SHOUTS = [
@@ -72,7 +77,9 @@ export const INCORRECT_SHOUTS = [
   "E shock you? Try again jo! ⚡",
   "Knowledge not found! 404 Error! ❌",
   "Is this how you want to enter Uni? 🏫",
-  "Small math, you don fail! Bully! 🤡"
+  "Small math, you don fail! Bully! 🤡",
+  "This one is a 'pity' error! Focus! 🎯",
+  "Don't let them laugh at you on result day! 📉"
 ];
 
 const firstNames = ["Chidi", "Olumide", "Amina", "Ngozi", "Tunde", "Zainab", "Femi", "Bisi", "Kola", "Efe", "Uche", "Ifeanyi", "Fatima", "Sade", "Emeka"];
@@ -113,10 +120,11 @@ export const PLANS: Plan[] = [
 ];
 
 export const MOCK_ACTIVITIES: ActivityLog[] = [
-  { id: '1', userEmail: 'tunde@gmail.com', action: 'Quiz Started', timestamp: '2 mins ago', details: 'Mathematics Practice' },
-  { id: '2', userEmail: 'kemi_a@web.com', action: 'Upgrade', timestamp: '15 mins ago', details: 'Upgraded to Premium' },
-  { id: '3', userEmail: 'mike_99@gmail.com', action: 'AI Explanation', timestamp: '45 mins ago', details: 'Physics: Motion' },
-  { id: '4', userEmail: 'josh@edu.ng', action: 'Quiz Finished', timestamp: '1 hour ago', details: 'Score: 18/20 (English)' },
+  { id: '1', userEmail: 'scholar_tunde@gmail.com', action: 'Quiz Started', timestamp: 'Just now', details: 'Chemistry (Atomic Structure)' },
+  { id: '2', userEmail: 'ngozi.j@edu.ng', action: 'Upgrade', timestamp: '5 mins ago', details: 'Upgraded to Pro Elite' },
+  { id: '3', userEmail: 'mike_physics@web.com', action: 'Study Session', timestamp: '12 mins ago', details: 'Mastering Motion & Gravity' },
+  { id: '4', userEmail: 'future_doc@jamb.ng', action: 'Quiz Finished', timestamp: '20 mins ago', details: 'Score: 19/20 (Biology)' },
+  { id: '5', userEmail: 'abubakar_f@gmail.com', action: 'AI Help', timestamp: '45 mins ago', details: 'Explaining Logarithms' },
 ];
 
 export const MOCK_PAYMENTS: PaymentLog[] = [
@@ -138,4 +146,6 @@ export const UPGRADE_MESSAGES = [
   "🚀 Ace JAMB with Premium: Unlock 5,000+ Past Questions!",
   "💡 Free users get limited questions. Go Pro for full exam simulations!",
   "🏆 Join 10,000+ students scoring 300+ with our AI Tutor.",
+  "⚡ Pro users finish exams 20% faster on average. Upgrade now!",
+  "💎 Unlock the 'Mistake Analysis' tool to see exactly where you fail.",
 ];

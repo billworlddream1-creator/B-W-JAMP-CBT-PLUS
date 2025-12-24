@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { LiveStats, ColorTheme } from '../types';
 
 interface LiveAnalyticsProps {
@@ -8,8 +8,26 @@ interface LiveAnalyticsProps {
 }
 
 const LiveAnalytics: React.FC<LiveAnalyticsProps> = ({ stats, theme }) => {
+  const [insight, setInsight] = useState("Analytical Insight: Physics participation has surged by 14% this morning. Mathematics remains the most challenging module globally.");
+
+  useEffect(() => {
+    const insights = [
+      "Analytical Insight: 85% of scholars scoring 320+ spend at least 2 hours daily in the Study Vault.",
+      "Trend Alert: Use of English proficiency is up 12% among Premium users this week.",
+      "Global Pulse: Over 45,000 practice questions were solved in the last 60 minutes.",
+      "Success Metric: Candidates using AI Explanations are 3x more likely to correct their mistakes in the next session.",
+      "Live Data: Biology is currently the most practiced subject in Southern Nigeria."
+    ];
+    
+    const interval = setInterval(() => {
+      setInsight(insights[Math.floor(Math.random() * insights.length)]);
+    }, 15000); // Rotate every 15 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="bg-white rounded-[3rem] p-10 shadow-2xl border border-slate-100 animate-fadeIn">
+    <div className="bg-white rounded-[3rem] p-10 shadow-2xl border border-slate-100 animate-fadeIn h-full flex flex-col">
       <div className="flex justify-between items-center mb-10">
         <div>
           <h3 className="text-2xl font-black text-slate-900 tracking-tighter uppercase">Platform Pulse</h3>
@@ -21,22 +39,22 @@ const LiveAnalytics: React.FC<LiveAnalyticsProps> = ({ stats, theme }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
         <div className="bg-slate-50 p-6 rounded-[2rem] border border-slate-100">
           <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-2">Active Scholars</span>
           <div className="text-3xl font-black text-slate-900 font-mono tracking-tighter">{stats.activeUsers.toLocaleString()}</div>
         </div>
         <div className="bg-slate-50 p-6 rounded-[2rem] border border-slate-100">
           <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-2">Trending Subject</span>
-          <div className={`text-3xl font-black text-${theme.primary} transition-colors duration-[2000ms] truncate`}>{stats.trendingSubject}</div>
+          <div className={`text-2xl font-black text-${theme.primary} transition-colors duration-[2000ms] truncate uppercase`}>{stats.trendingSubject}</div>
         </div>
-        <div className="bg-slate-50 p-6 rounded-[2rem] border border-slate-100 lg:col-span-2">
-          <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-2">Total Questions Solved</span>
+        <div className="bg-slate-50 p-6 rounded-[2rem] border border-slate-100 md:col-span-2">
+          <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-2">Questions Solved Today</span>
           <div className="text-3xl font-black text-slate-900 font-mono tracking-tighter">{stats.totalQuestionsSolved.toLocaleString()}</div>
         </div>
       </div>
 
-      <div>
+      <div className="flex-grow">
         <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6 border-b border-slate-50 pb-4">Recent High Scorers</h4>
         <div className="space-y-4">
           {stats.recentScores.map((score, i) => (
@@ -59,9 +77,9 @@ const LiveAnalytics: React.FC<LiveAnalyticsProps> = ({ stats, theme }) => {
         </div>
       </div>
 
-      <div className="mt-10 p-6 bg-slate-900 rounded-[2rem] text-center">
-        <p className="text-[9px] font-bold text-white/60 leading-relaxed tracking-wide uppercase">
-          Analytical Insight: Physics participation has surged by 14% this morning. Mathematics remains the most challenging module globally.
+      <div className="mt-10 p-6 bg-slate-900 rounded-[2rem] text-center min-h-[80px] flex items-center justify-center">
+        <p className="text-[9px] font-bold text-white/60 leading-relaxed tracking-wide uppercase italic">
+          {insight}
         </p>
       </div>
     </div>
