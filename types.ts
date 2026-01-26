@@ -3,6 +3,18 @@ export type Subject = 'Use of English' | 'Mathematics' | 'Physics' | 'Chemistry'
 
 export type UserTier = 'Free' | 'Basic' | 'Premium';
 
+export type AppView = 'HOME' | 'QUIZ' | 'STUDY' | 'RESULT' | 'PRICING' | 'ADMIN' | 'PROGRESS' | 'AUTH';
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  tier: UserTier;
+  role?: 'student' | 'admin';
+  avatar?: string;
+  lastLogin?: number;
+}
+
 export interface ColorTheme {
   primary: string;
   secondary: string;
@@ -34,6 +46,21 @@ export interface QuizState {
   startTime: number;
 }
 
+export interface SessionHistory {
+  id: string;
+  subject: Subject;
+  score: number;
+  total: number;
+  timestamp: number;
+  timeSpentSeconds: number;
+}
+
+export interface UserProgress {
+  sessions: SessionHistory[];
+  totalStudyTime: number; 
+  lastActive: number;
+}
+
 export interface StudyModule {
   id: string;
   title: string;
@@ -55,25 +82,30 @@ export interface LiveStats {
 
 export interface ActivityLog {
   id: string;
+  userId: string;
   userEmail: string;
   action: string;
-  timestamp: string;
+  timestamp: number;
   details: string;
 }
 
 export interface PaymentLog {
   id: string;
+  userId: string;
   userEmail: string;
   plan: UserTier;
   amount: number;
   date: string;
+  timestamp: number;
   status: 'Successful' | 'Pending' | 'Failed';
+  transactionRef: string;
 }
 
 export interface Plan {
   id: UserTier;
   name: string;
   price: string;
+  priceAmount: number;
   features: string[];
   color: string;
 }

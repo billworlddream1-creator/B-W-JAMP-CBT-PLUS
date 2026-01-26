@@ -3,9 +3,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>B&W JAMB CBT PLUS</title>
+    
+    <!-- PWA / Store Branding -->
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Stripe.js SDK -->
+    <script src="https://js.stripe.com/v3/"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,6 +23,14 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fafc;
             overflow-x: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+        #root {
+            height: 100%;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
         @keyframes bubble {
           0% { transform: scale(0.5); opacity: 0; }
@@ -23,6 +40,17 @@
         .animate-bubble {
           animation: bubble 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .safe-area-top {
+            padding-top: env(safe-area-inset-top);
+        }
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 <script type="importmap">
 {
