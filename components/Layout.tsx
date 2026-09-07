@@ -59,10 +59,8 @@ const Layout: React.FC<LayoutProps> = ({
           className="flex items-center space-x-3 cursor-pointer group"
           onClick={onNavigateHome}
         >
-          <div className={`bg-white p-1.5 rounded-xl transition-transform group-hover:rotate-12 group-hover:scale-110 shadow-lg`}>
-            <svg className={`w-6 h-6 text-${theme.primary} transition-colors duration-[2000ms]`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
+          <div className="bg-white p-1 rounded-xl transition-transform group-hover:scale-105 shadow-lg overflow-hidden flex items-center justify-center w-10 h-10">
+            <img src="/logo.png" alt="JAMB Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-xl font-black tracking-tighter uppercase">{APP_NAME}</h1>
         </div>
@@ -142,11 +140,9 @@ const Layout: React.FC<LayoutProps> = ({
       <footer className="bg-slate-900 text-slate-500 py-12 px-6 mt-auto hidden lg:block">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
-            <div className="flex items-center space-x-2 mb-3 justify-center md:justify-start">
-               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-                <span className="text-white font-black tracking-tighter text-lg uppercase">{APP_NAME}</span>
+            <div className="flex items-center space-x-3 mb-3 justify-center md:justify-start">
+               <img src="/logo.png" alt="JAMB Logo" className="w-8 h-8 object-contain bg-white rounded-lg p-0.5" />
+               <span className="text-white font-black tracking-tighter text-lg uppercase">{APP_NAME}</span>
             </div>
             <p className="text-xs font-medium max-w-xs leading-relaxed">The premier choice for serious JAMB candidates seeking academic excellence and high-fidelity testing.</p>
           </div>
