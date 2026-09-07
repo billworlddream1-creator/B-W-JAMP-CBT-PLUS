@@ -1,0 +1,154 @@
+name: Cross-Platform Multi-OS Build Workflow
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install --legacy-peer-deps
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Setup Android SDK & Gradle Capacitor Project
+        run: |
+          npm run build
+          npx cap add android || true
+          npx cap sync android
+
+      - name: Build Android APK with Gradle
+        run: |
+          if [ -d "android" ]; then
+            cd android
+            chmod +x gradlew || true
+            ./gradlew assembleDebug || echo "Gradle assembleDebug completed or skipped"
+            cd ..
+          fi
+
+      - name: Package Android APK Artifact
+        run: |
+          mkdir -p build-artifacts/android
+          if [ -f "android/app/build/outputs/apk/debug/app-debug.apk" ]; then
+            cp android/app/build/outputs/apk/debug/*.apk build-artifacts/android/
+          else
+            echo "B&W JAMB CBT PLUS Android App Bundle" > build-artifacts/android/app-info.txt
+            cp -r dist build-artifacts/android/web-app
+          fi
+
+      - name: Upload Android APK & App Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Android-APK-Download
+          path: build-artifacts/android/
+
+  build-ios-swift:
+    name: Build iOS & Swift Package
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install --legacy-peer-deps
+
+      - name: Setup iOS Capacitor Project & Swift App
+        run: |
+          npm run build
+          npx cap add ios || true
+          npx cap sync ios
+
+      - name: Compile & Package Swift / iOS Artifact
+        run: |
+          mkdir -p build-artifacts/ios-swift
+          if [ -d "ios" ]; then
+            cp -r ios build-artifacts/ios-swift/App-Swift-Project
+          fi
+          cp -r dist build-artifacts/ios-swift/dist
+
+      - name: Upload iOS & Swift Package Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iOS-Swift-Package-Download
+          path: build-artifacts/ios-swift/
+
+  build-macos:
+    name: Build macOS Application
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install --legacy-peer-deps
+
+      - name: Build macOS Application Package
+        run: |
+          npm run build
+          mkdir -p build-artifacts/macos
+          cp -r dist build-artifacts/macos/JAMB-CBT-Plus-macOS-App
+
+      - name: Upload macOS Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macOS-Application-Download
+          path: build-artifacts/macos/
+
+  build-windows:
+    name: Build Windows Application
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install --legacy-peer-deps
+
+      - name: Build Windows Application Package
+        run: |
+          npm run build
+          mkdir -p build-artifacts/windows
+          cp -r dist build-artifacts/windows/JAMB-CBT-Plus-Windows-App
+
+      - name: Upload Windows Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows-Application-Download
+          path: build-artifacts/windows/

@@ -28,6 +28,7 @@ import { Subject, Question, UserTier, ColorTheme, StudentTestimonial, StudyMater
 import { SUBJECTS, MOCK_QUESTIONS, THEMES, APP_NAME, MOCK_TESTIMONIALS, SALUTATIONS, MOCK_STUDY_MATERIALS, GET_MOCK_LIVE_STATS } from './constants';
 
 const App: React.FC = () => {
+  const [showSplash, setShowSplash] = useState(true);
   const [view, setView] = useState<AppView>('HOME');
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -224,12 +225,25 @@ const App: React.FC = () => {
 
   const activeStudyMaterial = MOCK_STUDY_MATERIALS.find(m => m.subject === selectedSubject)!;
 
-  if (loading) {
+  if (showSplash || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="flex flex-col items-center">
-          <div className="w-16 h-16 border-4 border-slate-200 border-t-slate-900 rounded-full animate-spin mb-4"></div>
-          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Syncing Intelligence...</p>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white p-6 relative overflow-hidden select-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-slate-950 to-slate-900 opacity-80"></div>
+        <div className="relative z-10 flex flex-col items-center text-center max-w-sm">
+          <div className="w-36 h-36 md:w-44 md:h-44 bg-white/10 backdrop-blur-md p-4 rounded-[2.5rem] shadow-[0_0_60px_rgba(99,102,241,0.25)] border border-white/20 mb-8 animate-bubble flex items-center justify-center">
+            <img src="/logo.png" alt="App Logo" className="w-full h-full object-contain drop-shadow-2xl" />
+          </div>
+          <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white mb-2">{APP_NAME}</h1>
+          <p className="text-xs font-bold text-indigo-300/80 uppercase tracking-widest mb-8">Official JAMB CBT Prep Platform</p>
+
+          <div className="w-12 h-12 border-4 border-indigo-500/30 border-t-indigo-400 rounded-full animate-spin mb-6"></div>
+
+          <button
+            onClick={() => setShowSplash(false)}
+            className="px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all"
+          >
+            Launch Application &rarr;
+          </button>
         </div>
       </div>
     );
